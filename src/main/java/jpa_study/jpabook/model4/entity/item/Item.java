@@ -1,12 +1,16 @@
-package jpa_study.jpabook.model3.entity;
+package jpa_study.jpabook.model4.entity.item;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.List;
+import jpa_study.jpabook.model4.entity.Category;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +20,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Item {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)   // 상속 관계 매핑, 단일 테이블 전략 사용
+@DiscriminatorColumn(name = "DTYPE")                    // 단일 테이블 전략에서 필욯나 구분 컬럼 설정
+public abstract class Item {
 
     @Id @GeneratedValue
     @Column(name = "ITEM_ID")

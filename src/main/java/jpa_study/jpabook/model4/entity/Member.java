@@ -1,10 +1,10 @@
-package jpa_study.jpabook.model3.entity;
+package jpa_study.jpabook.model4.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AccessLevel;
@@ -16,16 +16,19 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Item {
+public class Member extends BaseEntity {
 
     @Id @GeneratedValue
-    @Column(name = "ITEM_ID")
+    @Column(name = "MEMBER_ID")
     private Long id;
 
-    private String name;        // 이름
-    private int price;          // 가격
-    private int stockQuantity;  // 재고 수량
+    private String name;
 
-    @ManyToMany(mappedBy = "items")
-    private List<Category> categories = new ArrayList<Category>();
+    private String city;
+    private String street;
+    private String zipcode;
+
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<Order>();
 }
+

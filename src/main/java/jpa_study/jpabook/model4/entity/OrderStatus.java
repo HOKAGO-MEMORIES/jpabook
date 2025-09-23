@@ -1,4 +1,4 @@
-package jpa_study.jpabook.model3.entity;
+package jpa_study.jpabook.model4.entity;
 
 public enum OrderStatus {
     ORDER, CANCEL

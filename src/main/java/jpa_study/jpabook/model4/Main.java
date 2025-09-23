@@ -1,4 +1,4 @@
-package jpa_study.jpabook.model3;
+package jpa_study.jpabook.model4;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
